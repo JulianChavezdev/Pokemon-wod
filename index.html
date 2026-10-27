@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mystery Catch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+
+
+    <picture id="playersBg">
+      <img src="https://res.cloudinary.com/dbadhyp7x/image/upload/v1793007613/image_10_qsruzy.png" alt="Game screen background" class="backgroundImage">
+    </picture>
+
+
+    <section id="screenNames" class="screen isActive" aria-labelledby="namesTitle">
+      <header class="topbar">
+        <button id="btnBack" class="iconBtn" type="button" aria-label="Go back">&larr;</button>
+        <span class="pill">Paso 1 de 2</span>
+      </header>
+
+      <div class="card namesCard">
+        <h1 id="namesTitle" class="title">¿Quiénes juegan?</h1>
+        <p class="hint">Añade 16 nombres. Cada uno recibirá un Pokémon aleatorio.</p>
+
+        <form id="nameForm" class="nameForm" novalidate>
+          <label for="nameInput" class="srOnly">Nombre</label>
+          <input id="nameInput" class="input" type="text" placeholder="Escribe un nombre" maxlength="12" autocomplete="off">
+          <button class="squareBtn" type="submit" aria-label="Añadir nombre">+</button>
+        </form>
+        <p id="nameError" class="error" role="alert"></p>
+
+        <div class="countRow">
+          <span>Nombres</span>
+          <span id="nameCount">0/16</span>
+        </div>
+        <div id="progress" class="progress" aria-hidden="true"></div>
+
+        <ul id="chips" class="chips"></ul>
+      </div>
+
+      <div class="bottomActions">
+        <button id="btnFill" class="btn btnLight" type="button">Rellenar con ejemplos</button>
+        <button id="btnStart" class="btn btnPrimary" type="button" disabled>Comenzar · 16 faltan</button>
+      </div>
+    </section>
+
+
+    <section id="screenGame" class="screen" aria-label="Juego">
+      <header class="topbar">
+        <button id="btnClose" class="iconBtn" type="button" aria-label="Quit game">&times;</button>
+        <span class="pill pillYellow">
+          <img class="ball" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="">
+          <span id="caughtCount">0/16</span>
+        </span>
+        <button id="btnTeams" class="pill pillBtn" type="button">EQUIPOS</button>
+      </header>
+
+      <div class="encounter">
+        <div class="wildTag">
+          <img class="ball" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="">
+          <div>
+            <strong id="wildName">???</strong>
+            <small id="wildLevel">salvaje · Nvl. ??</small>
+          </div>
+        </div>
+
+        <div id="slot" class="slot">
+          <img id="throwBall" class="slotBall" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="">
+          <span class="slotFlash"></span>
+          <img id="sprite" class="slotSprite" alt="">
+        </div>
+      </div>
+
+      <div class="card dialog">
+        <p id="dialogText" class="dialogText" aria-live="polite">
+          ¡Un Pokémon salvaje apareció!<br>¿A quién pertenecerá?
+        </p>
+        <button id="btnCatch" class="btn btnPrimary btnBig" type="button">
+          <img class="ball" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="">
+          <span id="catchLabel">ATRAPAR</span>
+        </button>
+      </div>
+    </section>
+
+
+    <dialog id="teamsDialog" class="teams card">
+      <header class="teamsHeader">
+        <h2 class="title">Equipos</h2>
+        <span id="teamsCounter" class="pill pillYellow">0/16</span>
+        <button id="btnTeamsClose" class="iconBtn iconBtnSm" type="button" aria-label="Cerrar">&times;</button>
+      </header>
+
+
+      <ul id="teamList" class="teamGrid"></ul>
+
+      <div class="teamsFooter">
+        <button id="btnContinue" class="btn btnPrimary" type="button">CONTINUAR JUGANDO</button>
+        <button id="btnRestart" class="btn btnLight" type="button" hidden>JUGAR DE NUEVO</button>
+      </div>
+    </dialog>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
